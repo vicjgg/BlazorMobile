@@ -34,5 +34,7 @@ namespace BlazorMobile.Components
         View GetView();
 
         void LaunchBlazorApp();
+
+        void SendNavigating(WebNavigatingEventArgs args);
     }
 }

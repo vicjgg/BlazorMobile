@@ -11,11 +11,9 @@ using Microsoft.AspNetCore.ResponseCompression;
 using BlazorMobile.Common.Services;
 using BlazorMobile.Common;
 using BlazorMobile.InteropBlazorApp.Helpers;
-using Microsoft.Extensions.FileProviders;
-using BlazorMobile.InteropBlazorApp;
-using System.Threading.Tasks;
-using ElectronNET.API;
 using Xamarin.Forms;
+using System.Threading;
+using System.IO.IsolatedStorage;
 
 namespace BlazorMobile.InteropApp.Desktop
 {
@@ -90,6 +88,13 @@ namespace BlazorMobile.InteropApp.Desktop
             });
 
             app.UseBlazorMobileWithElectronNET<App>();
+
+            //Launch the Blazor app
+            Forms.LoadApplication(new App());
+
+            // If your code already started your BlazorWebView.LaunchBlazorApp method, you should retrieve here the Electron main BrowserWindow used to create it.
+            // Otherwise, return a null Task value
+            var myBrowserWindow = Forms.GetBrowserWindow();
         }
     }
 }
